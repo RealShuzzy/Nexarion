@@ -6,7 +6,12 @@ function createMainWIndow() {
     const mainWindow = new BrowserWindow({
         title: 'Nexarion',
         width: 1280,
-        width: 720
+        height: 720,
+        autoHideMenuBar: true,
+
+        minWidth: 640,
+        minHeight: 360,
+        
     });
 
     const startUrl = url.format({
