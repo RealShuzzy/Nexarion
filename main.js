@@ -1,4 +1,4 @@
-const {app, BrowserWindow } = require('electron');
+const {app, BrowserWindow, ipcMain } = require('electron');
 const url = require('url');
 const path = require('path');
 
@@ -11,16 +11,28 @@ function createMainWIndow() {
 
         minWidth: 640,
         minHeight: 360,
+
+        webPreferences: {
+            contextIsolation: true,
+            nodeIntegration: true,
+            preload: path.join(__dirname, './preload.js'),
+        }
         
     });
 
+    mainWindow.webContents.openDevTools()
+
     const startUrl = url.format({
-        pathname: path.join(__dirname, 'index.html'),
+        pathname: path.join(__dirname, './nexarion/build/index.html'),
         protocol: 'file'
 
     });
 
-    mainWindow.loadURL(startUrl);
+    mainWindow.loadURL(startUrl); //startUrl
 }
 
 app.whenReady().then(createMainWIndow);
+
+ipcMain.on('submit:todoForm', (event, opts) => {
+    console.log(opts);
+});
