@@ -10,6 +10,7 @@ export const Work: React.FC = () => {
         <p>The home directory is @ {electron.homeDir()}</p>
         <p>The version of the os is {electron.osVersion()}</p>
         <p>The architecture is {electron.arch()}</p>
+        <button className="btn btn-primary">One</button>
         <ToDoForm />
     </div>
 }
