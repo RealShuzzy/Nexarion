@@ -1,14 +1,13 @@
 import React from "react"
-import { Outlet } from "react-router-dom"
-import { Link } from "react-router-dom"
+import { Outlet, Link } from "react-router-dom"
+import { Navbar } from "./Navbar";
+import { Main } from "./Main";
 
 export const Layout: React.FC = () => {
-    return <div>
-        <p>This is our layout</p>
-        <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="work">Work</Link></li>
-        </ul>
+    return <div id="layout">
+        <Navbar/>
+        <Main/>
+
         <Outlet />
     </div>
 }
